@@ -1,0 +1,21 @@
+version: "3.9"
+   
+services:
+  db:
+    image: kartoza/postgis:13-3.1
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=postgres,gis
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
