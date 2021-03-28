@@ -86,3 +86,9 @@ An Open Layers map is available to display peaks.
 To access it browse to : http://localhost:8000/map
 
 When clicking on a peak, it will displays the next 3 forecast. 
+
+
+Documentation
+--------------------
+
+This documentation is also available on http://localhost:8000/docs
