@@ -1,3 +1,36 @@
+<<<<<<< HEAD
+version: '2.1'
+
+services:
+  db:
+    image: kartoza/postgis:13-3.1
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
+  web:
+    build: .
+    command:  >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+=======
 services:
   db:
     image: kartoza/postgis:13-3.1
@@ -25,3 +58,4 @@ services:
       db:
         condition: service_healthy
 
+>>>>>>> 2feffa2a44b875ad4daf274ffce43e835f031718

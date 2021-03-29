@@ -22,14 +22,12 @@ Reference : https://github.com/docker/compose
 
 **Step 1** : Clone this repo :
 
-	git clone https://github.com/libgit2/libgit2
+	git clone https://github.com/romainver/PeakViewerAPI.git
 **Step 2** Inside local repo, open a terminal prompt and run :
 
-	docker-compose build 
-**Step 3** Once the container is built, you can run it using :
+	docker-compose up -d
 
-    docker-compose up
-**Step 4** Access API root by browsing to http://localhost:8000/
+**Step 3** Access API root by browsing to http://localhost:8000/
 
 ----------
 
@@ -45,6 +43,7 @@ PUT /peaks/{id}| Update peak based on peak ID
 POST peaks/  | Create peak
 GET /getpeakswithinBB/{top_lat},{top_long},{bot_lat},{bot_long} | Retrieve a list of peaks in a given geographical bounding box. 
 
+Exemple : getpeakswithinBB/16.253959,16.471150,-22.371612,69.008175 
 > **Note:**  Peak attributes have to be inside the body of the request for PUT and POST operations, either as form-data format or json format. 
 
  **Attributes** for peak are : 
